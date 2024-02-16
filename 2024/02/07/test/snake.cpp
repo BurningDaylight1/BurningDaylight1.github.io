@@ -1,5 +1,5 @@
 // snake.cpp : Defines the entry point for the console application.
-#include "stdafx.h"
+#include <windows.h> 
 /*******头  文  件*******/
 #include<stdio.h>			//标准输入输出函数库
 #include<time.h>			//用于获得随机数
@@ -108,7 +108,7 @@ void welcometogame()
 {
 	int n;
 	int i,j = 1;
-	gotoxy(43,18);
+	gotoxy(80,18);
 	color(11);
 	printf("贪 吃 蛇 游 戏");
 	color(14);          			//黄色边框
@@ -182,7 +182,7 @@ void createMap()
     for(i=1;i<26;i++)		//打印左右边框
     {
         gotoxy(0,i);
-        printf("□");                        
+        printf("");                        
         gotoxy(56,i);
         printf("□");        
     }
@@ -268,7 +268,7 @@ void createfood()
     snake *food_1;
     srand((unsigned)time(NULL));        	//初始化随机数
     food_1=(snake*)malloc(sizeof(snake));   //初始化food_1
-    while((food_1->x%2)!=0)    				//保证其为偶数，使得食物能与蛇头对齐，然后食物会出现在网格线上
+    while((food_1->x%2)==0)    				//保证其为偶数，使得食物能与蛇头对齐，然后食物会出现在网格线上
     {
         food_1->x=rand()%52+2;              //食物随机出现，食物的x坐标在2~53
     }
